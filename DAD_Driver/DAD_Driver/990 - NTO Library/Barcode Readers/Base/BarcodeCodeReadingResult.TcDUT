@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <DUT Name="BarcodeCodeReadingResult" Id="{02f6c68e-ed92-4246-9bc6-40190192fdb9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+///Reading result
+TYPE BarcodeCodeReadingResult :
+(
+	noRead := 0,
+    goodRead
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

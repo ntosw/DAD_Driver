@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <GVL Name="ObjectSetup" Id="{518ef158-1f4f-4831-a267-9e7c804cab79}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL CONSTANT
+    ErrorHistMin : INT := 0; ///Error history array bound minimum
+    ErrorHistMax : INT := 10; ///Error history array bound maximum
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

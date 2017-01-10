@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <Itf Name="IDataReciever" Id="{2443fb2b-c3a2-4e64-98e5-c23932d17bef}">
+    <Declaration><![CDATA[///Data reciever interface, implement this interface in the block
+///that has to recieve data 
+INTERFACE IDataReciever
+]]></Declaration>
+    <Method Name="NewDataRecieved" Id="{b7ee0f63-4c37-40c8-b765-f1d990907cc5}">
+      <Declaration><![CDATA[// New data recieved
+METHOD NewDataRecieved : HResult
+VAR_INPUT
+    data : Data; ///Data recieved
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

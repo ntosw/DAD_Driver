@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <GVL Name="NTO_LibraryAscii" Id="{9b377c13-9786-42f3-985c-d9af4c11aa90}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+//General control ascii charachters
+VAR_GLOBAL CONSTANT
+    STX	  : BYTE := 16#02; //Start of text
+    ETX   : BYTE := 16#03; //End of text
+    Space : BYTE := 16#20; //Space
+	CR	  : BYTE := 16#0D; //Carriage return
+	LF	  : BYTE := 16#0A; //Line feed
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

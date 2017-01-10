@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <DUT Name="DAD_ControlFieldTransmit" Id="{61e92bce-342e-432b-b858-d80817ef282b}">
+    <Declaration><![CDATA[///DAD Driver control field transmit
+TYPE DAD_ControlFieldTransmit :
+STRUCT
+    TxBufferEmpty : BIT; //Must toggle when Input Area data has been read by Master
+    RxBufferFull : BIT; //Must toggle when Master makes available new Output Area data
+    ResyncRequest : BIT; //set to 1 for one second to resynchronize the slave. After resynchronization, all 4 handshake bits are set to 0
+    MoreBit : BIT; //is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece
+    DAD_Fixed1 : BIT := FALSE; //Set to 0 when DAD messaging protocol is used
+    DAD_Fixed2 : BIT := FALSE; //Set to 0 when DAD messaging protocol is used
+    DAD_Fixed3 : BIT := FALSE; //Set to 0 when DAD messaging protocol is used
+    DAD_Fixed4 : BIT := TRUE;  //Set to 1 when DAD messaging protocol is used  
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

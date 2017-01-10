@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <Itf Name="IDAD_Controller" Id="{14f16986-4b52-4327-9b3c-fbfa8d3363bf}">
+    <Declaration><![CDATA[INTERFACE IDAD_Controller EXTENDS IObject, IDataTransmit
+]]></Declaration>
+    <Method Name="FlushData" Id="{e4b90bbe-56c1-4ada-a709-5f05b70881c4}">
+      <Declaration><![CDATA[///Flushes the data in the slave queue, must be called until HResult is not busy 
+METHOD FlushData : HResult
+VAR_IN_OUT
+    id : UDINT; ///Used to id the called, should be 0 at first call, when functions finish normally success or error it will reset to 0
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="Resync" Id="{4e80fe2f-2f30-4b9a-97be-d2971a5a3dbe}">
+      <Declaration><![CDATA[//Resync the DAD controller driver
+METHOD Resync : HResult
+VAR_IN_OUT
+    id : UDINT; ///Used to id the called, should be 0 at first call, when functions finish normally success or error it will reset to 0
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

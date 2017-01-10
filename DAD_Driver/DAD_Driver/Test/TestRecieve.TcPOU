@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="TestRecieve" Id="{ac45b7df-f119-44bf-ad93-44d7bc6f8a02}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TestRecieve EXTENDS Object IMPLEMENTS IDataReciever
+VAR
+    buffer : testData;
+    currentLength : UDINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="NewDataRecieved" Id="{5380409a-4052-40e4-9eb6-8bd6a2573e60}">
+      <Declaration><![CDATA[{attribute '''NORMAL__COMMENT' := ' New data recieved'}
+(* New data recieved*)
+METHOD NewDataRecieved : HResult
+VAR_INPUT
+	data	: Data; //Data recieved
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF currentLength + data.length > 9999 THEN
+    currentLength := 0;
+END_IF
+
+Tc2_System.MEMCPY(destAddr := ADR(buffer.buffer[currentLength]),srcAddr := data.data, n := data.length); 
+
+currentLength := currentLength + data.length;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{546fd031-9c6c-4eaf-92f6-be4c2cec096e}">
+      <Declaration><![CDATA[(*Reset error, allways call super*)
+METHOD Reset
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Tc2_System.MEMSET(destAddr := ADR(buffer), fillByte := 0, n := SIZEOF(buffer));
+currentLength := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="TestRecieve">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="TestRecieve.NewDataRecieved">
+      <LineId Id="3" Count="5" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="TestRecieve.Reset">
+      <LineId Id="5" Count="0" />
+      <LineId Id="4" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

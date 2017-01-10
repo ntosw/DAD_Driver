@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="DAD_Controller" Id="{bc1a308d-9596-4305-8d2a-aaa40a76af09}" SpecialFunc="None">
+    <Declaration><![CDATA[/// Controls a device using the Datalogic DAD driver.
+/// The data is transferred using the Datalogic FCM DAD driver and 
+/// gives the functions for resync and flush data.
+/// A internal buffer of 256 butes allows for sending telegrams up
+/// to that size in one transmittion. Telegram is automatically fragmnented
+/// using Datalogic DAD driver standard.
+FUNCTION_BLOCK DAD_Controller EXTENDS Object IMPLEMENTS IDAD_Controller
+//---------------- DAD device connection ---------------------
+VAR
+    //---------------- Inputs from DAD device ----------------
+    I_ControlFieldRecieve AT %I* : DAD_ControlFieldRecieve; ///Control field recieve
+    I_SAP_FieldRecieve AT %I* : BYTE; //Service Access Protocol field recieve
+    I_LengthFieldRecieve AT %I* : BYTE; //Data length recieve 
+    I_ApplicationDataRecieve AT %I* : ARRAY[0..255] OF BYTE; //Application data recieve
+    //---------------- Outputs to DAD device ----------------
+    Q_ControlFieldTransmit AT %Q* : DAD_ControlFieldTransmit; ///Control field transmit
+    Q_SAP_FieldTransmit AT %Q* : BYTE; //Service Access Protocol field transmit
+    Q_LengthFieldTransmit AT %Q* : BYTE; //Data length transmit 
+    Q_ApplicationDataTransmit AT %Q* : ARRAY[0..255] OF BYTE; //Application data recieve
+END_VAR
+//---------------- Class setup ---------------------
+VAR
+    _callback : IDataReciever; //Data reciever callback handler
+    _maxApplicationInputSize : INT := 53; //Maximum application input size
+    _maxApplicationOutputSize : INT := 5; //Maximum application output size
+END_VAR
+//---------------- Reciever ---------------------
+VAR
+    recieveBuffer : ARRAY[0..recieveMaxBufferLength] OF BYTE; //Recieve buffer
+    recieveBufferLength : UDINT; //Current buffer length
+    recieveWatchdog : Tc2_Standard.TON; //Timeout for recieving active
+    _recieveTimeout : TIME := T#10S; //Watchdog time
+END_VAR
+VAR CONSTANT
+    recieveMaxBufferLength : UDINT := 255; // Recieve buffer max length
+END_VAR
+//---------------- Transmitter ---------------------
+VAR
+    transmitBuffer : ARRAY[0..transmitMaxBufferLength] OF BYTE; //Send buffer
+    transmitBufferLength : UDINT; //Current buffer length
+    transmittedLength : UDINT; //Fragments length transmitted
+    currentTransmitCallState : UDINT := 0; // Current transmit call state
+    transmitting : BOOL; //Currently transmitting
+    transmitWatchdog : Tc2_Standard.TON; //Timeout for recieving active
+    _transmitTimeout : TIME := T#10S; //Watchdog time
+END_VAR
+VAR CONSTANT
+    transmitMaxBufferLength : UDINT := 50; // Transmit buffer max length
+END_VAR
+//---------------- Resync ---------------------
+VAR
+    currentResyncCallState : UDINT := 0; // Current resync call state
+    resyncWatchdog : Tc2_Standard.TON; //Watchdog
+    resyncTimeout : TIME := T#10S; //Watchdog time
+END_VAR
+//---------------- Flush ----------------------
+VAR
+    currentFlushCallState : UDINT := 0; // Current flush call state
+    flushWatchdog : Tc2_Standard.TON; //Watchdog
+    flushTimeout : TIME := T#10S; //Watchdog time
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Control" Id="{d2cc1d0c-32f5-4b2a-b025-7a804fc332f5}">
+      <Declaration><![CDATA[///Control, override to get cyclic task in FB
+METHOD INTERNAL Control
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF currentResyncCallState = 0 THEN
+    Reciever();
+END_IF
+Transmitter();
+
+// --------------- Resync watchdog ---------------
+resyncWatchdog(IN := currentResyncCallState <> 0, PT := resyncTimeout);
+IF resyncWatchdog.Q THEN
+    currentResyncCallState := 0;
+    Q_ControlFieldTransmit.ResyncRequest := FALSE;
+END_IF
+// -------------- Flush watchdog -----------------
+flushWatchdog(IN := currentFlushCallState <> 0, PT := flushTimeout);
+IF flushWatchdog.Q THEN
+    currentFlushCallState := 0;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{66c905c7-7877-417e-9a29-558862c882c8}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    callback : IDataReciever; //Calling function block
+    maxApplicationInputSize : INT := 53; //Maximum application input size
+    maxApplicationOutputSize : INT := 5; //Maximum application output size
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^._version := '1.0';
+THIS^._className := 'DAD_Controller';
+THIS^._callback := callback;
+THIS^._maxApplicationInputSize := maxApplicationInputSize;
+THIS^._maxApplicationOutputSize := maxApplicationOutputSize;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FlushData" Id="{b00b96a4-c7ef-404f-89c6-f06940a63603}">
+      <Declaration><![CDATA[///Flushes the data in the slave queue, must be called until HResult is not busy 
+METHOD FlushData : HResult
+VAR_IN_OUT
+    id : UDINT; ///Used to id the called, should be 0 at first call, when functions finish normally success or error it will reset to 0
+END_VAR
+VAR CONSTANT
+    flushID : UDINT := 10003; //Unique function call id
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="MaxDataLength" Id="{647bab5d-3c04-46cf-b4ba-d06a346e75e8}">
+      <Declaration><![CDATA[// Gets the maximum allow data to send in one transmittion
+PROPERTY MaxDataLength : UDINT]]></Declaration>
+      <Get Name="Get" Id="{4f10408c-aaef-4bdc-bac6-69d82a26ae45}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[MaxDataLength := transmitMaxBufferLength;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reciever" Id="{62f9efbf-1d6b-4089-b90e-6b601165c787}">
+      <Declaration><![CDATA[METHOD PROTECTED Reciever
+VAR
+    data : Data;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//---------------- Recieve new data from slave ---------------------
+IF I_ControlFieldRecieve.TxBufferFull <> Q_ControlFieldTransmit.TxBufferEmpty THEN
+    IF (I_LengthFieldRecieve + recieveBufferLength) >= recieveMaxBufferLength THEN
+        THIS^.SetError(errorID := 1);
+    ELSE
+        Tc2_System.MEMCPY(destAddr := ADR(recieveBuffer[recieveBufferLength]), srcAddr := ADR(I_ApplicationDataRecieve[0]), n := BYTE_TO_UDINT(I_LengthFieldRecieve));
+        recieveBufferLength := recieveBufferLength + I_LengthFieldRecieve;
+        IF recieveBufferLength >= recieveMaxBufferLength THEN
+            recieveBufferLength := recieveMaxBufferLength;
+        END_IF
+	END_IF
+    // Check if further message fragments, if full message send to callback else add to buffer and wait
+    // for next message fragment 
+    IF NOT(I_ControlFieldRecieve.MoreBit) THEN
+        IF _callback <> 0 THEN
+            data.data := ADR(recieveBuffer[0]);
+            data.length := recieveBufferLength;
+            _callback.NewDataRecieved(data := data);
+		END_IF
+        recieveBufferLength := 0;
+    END_IF
+    Q_ControlFieldTransmit.TxBufferEmpty := I_ControlFieldRecieve.TxBufferFull;
+END_IF
+//--------------------- Watchdog ---------------------------
+recieveWatchdog(IN := recieveBufferLength > 0, PT := _recieveTimeout);
+IF recieveWatchdog.Q THEN
+    recieveBufferLength := 0;
+    THIS^.AddError(errorID := 2);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="RecieveTimeout" Id="{acc136b7-18be-405d-aaea-fbcf619f535d}">
+      <Declaration><![CDATA[PROPERTY RecieveTimeout : TIME]]></Declaration>
+      <Get Name="Get" Id="{5094a95c-1811-4774-915a-eaa6ae9d3228}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[RecieveTimeout := _recieveTimeout;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{c21cd1e7-80de-4239-b1b8-98e5216a4565}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_recieveTimeout := RecieveTimeout;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="Resync" Id="{974d0e03-8d8f-4cc4-b4dd-66d416c152b9}">
+      <Declaration><![CDATA[//Resync the DAD controller driver
+METHOD Resync : HResult
+VAR_IN_OUT
+    id : UDINT; ///Used to id the called, should be 0 at first call, when functions finish normally success or error it will reset to 0
+END_VAR
+VAR CONSTANT
+    resyncID : UDINT := 10002; //Unique function call id
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// ---------------- Check function call ---------------------
+IF currentResyncCallState <> 0 AND id = 0 THEN
+    Resync := HResultErrors.Busy;
+    RETURN;
+END_IF
+IF currentResyncCallState = 0 AND id <> 0 THEN
+    Resync := HResultErrors.InvalidParameter;
+    RETURN;
+END_IF
+IF id <> 0 AND id <> resyncID THEN
+    Resync := HResultErrors.InvalidParameter;
+    RETURN;
+END_IF
+Resync := HResultSuccess.Busy;
+//Start the resync process at first call
+IF currentResyncCallState = 0 AND id = 0 THEN    
+    currentResyncCallState := resyncID;
+    id := currentResyncCallState;
+    Q_ControlFieldTransmit.ResyncRequest := TRUE;
+END_IF
+IF Q_ControlFieldTransmit.ResyncRequest AND I_ControlFieldRecieve.ResyncAcknowledge THEN
+    Q_ControlFieldTransmit.ResyncRequest := FALSE;
+END_IF
+IF NOT Q_ControlFieldTransmit.ResyncRequest AND NOT I_ControlFieldRecieve.ResyncAcknowledge THEN
+    Q_ControlFieldTransmit.MoreBit := FALSE;
+    Q_ControlFieldTransmit.RxBufferFull := FALSE;
+    Q_ControlFieldTransmit.TxBufferEmpty := FALSE;
+    recieveBufferLength := 0;
+    currentTransmitCallState := 0;
+    transmitBufferLength := 0;
+    transmitting := FALSE;
+    THIS^.Reset();
+    id := 0;
+    currentResyncCallState := 0;
+    Resync := HResultSuccess.Done;
+END_IF;
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="TransmitData" Id="{9246a576-747d-4ee5-89ac-2b5d373d90ef}">
+      <Declaration><![CDATA[/// Transmit data, keep calling while HResult returns busy
+/// General implementation should fully copy data to internal
+/// buffer at first call
+METHOD TransmitData : HResult
+VAR_INPUT
+    data : PVOID; ///Pointer to first byte of data to send
+    length : UDINT; ///Data length to send
+END_VAR
+VAR_IN_OUT
+    id : UDINT; ///Used to id the called, should be 0 at first call, when functions finish normally success or error it will reset to 0
+END_VAR
+VAR CONSTANT
+    transmitID : UDINT := 10001; //Unique function call id
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// ---------------- Check function call ---------------------
+IF currentTransmitCallState <> 0 AND id = 0 THEN
+    TransmitData := HResultErrors.Busy;
+    RETURN;
+END_IF
+IF currentTransmitCallState = 0 AND id <> 0 THEN
+    TransmitData := HResultErrors.InvalidParameter;
+    RETURN;
+END_IF
+IF id <> 0 AND id <> transmitID THEN
+    TransmitData := HResultErrors.InvalidParameter;
+    RETURN;
+END_IF
+IF currentResyncCallState <> 0 THEN
+   TransmitData := HResultErrors.NotConnected;
+   RETURN; 
+END_IF
+
+// At first call, copy new telegram to buffer
+IF id = 0 AND currentTransmitCallState = 0 THEN
+    IF data = 0 OR length = 0 OR length >= transmitMaxBufferLength THEN
+        TransmitData := HResultErrors.InvalidPointerParameters;
+        RETURN;
+    END_IF
+    id := transmitID;
+    currentTransmitCallState := transmitID;
+    TransmitData := HResultSuccess.Busy;
+    Tc2_System.MEMCPY(destAddr := ADR(transmitBuffer), srcAddr := data, n := length);
+    transmitBufferLength := length;
+    transmitting := FALSE;
+END_IF
+// Transmit data string
+IF id = currentTransmitCallState THEN
+    TransmitData := HResultSuccess.Busy;
+    IF NOT(transmitting) THEN
+        IF I_ControlFieldRecieve.RxBufferEmpty = Q_ControlFieldTransmit.RxBufferFull THEN
+            /// Transmit data fragment
+            transmitting := TRUE;
+            Q_LengthFieldTransmit := UDINT_TO_BYTE(MIN(INT_TO_UDINT(_maxApplicationOutputSize), transmitBufferLength - transmittedLength));
+            Q_ControlFieldTransmit.MoreBit := (transmittedLength + Q_LengthFieldTransmit) < transmitBufferLength;
+            Tc2_System.MEMCPY(destAddr := ADR(Q_ApplicationDataTransmit), srcAddr := ADR(transmitBuffer[transmittedLength]), n := Q_LengthFieldTransmit);
+            transmittedLength := transmittedLength + Q_LengthFieldTransmit;
+            Q_ControlFieldTransmit.RxBufferFull := NOT Q_ControlFieldTransmit.RxBufferFull;
+		END_IF
+    ELSE    
+       IF I_ControlFieldRecieve.RxBufferEmpty = Q_ControlFieldTransmit.RxBufferFull THEN
+           IF transmittedLength >= transmitBufferLength THEN
+               TransmitData := HResultSuccess.Done;
+               transmittedLength := 0;
+               currentTransmitCallState := 0;
+               id := 0;
+		   END_IF
+           transmitting := FALSE;
+	   END_IF
+	END_IF
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Transmitter" Id="{6f69c7af-869b-4f71-9ce9-32e8a9251557}">
+      <Declaration><![CDATA[METHOD PROTECTED Transmitter
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//--------------------- Watchdog ---------------------------
+transmitWatchdog(IN := currentTransmitCallState <> 0, PT := _transmitTimeout);
+IF transmitWatchdog.Q THEN
+    currentTransmitCallState := 0;
+    transmitBufferLength := 0;
+    transmitting := 0;
+    THIS^.AddError(errorID := 3);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="TransmitTimeout" Id="{37f27828-6866-45e8-98f2-43c469198d4d}">
+      <Declaration><![CDATA[PROPERTY TransmitTimeout : TIME]]></Declaration>
+      <Get Name="Get" Id="{2b846a2c-d4dd-42b3-9493-842494125d08}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TransmitTimeout := _transmitTimeout;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{aab07385-cb87-43e2-a48d-ea1d4acf3050}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_transmitTimeout := TransmitTimeout;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="DAD_Controller">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.Control">
+      <LineId Id="10" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="12" Count="2" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="3" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.FB_init">
+      <LineId Id="3" Count="3" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.FlushData">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.MaxDataLength.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.Reciever">
+      <LineId Id="3" Count="2" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="4" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="12" Count="3" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="16" Count="5" />
+      <LineId Id="29" Count="3" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.RecieveTimeout.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.RecieveTimeout.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.Resync">
+      <LineId Id="17" Count="11" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="34" Count="2" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="39" Count="1" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="43" Count="9" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.TransmitData">
+      <LineId Id="3" Count="11" />
+      <LineId Id="70" Count="1" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="15" Count="40" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.Transmitter">
+      <LineId Id="5" Count="2" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.TransmitTimeout.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="DAD_Controller.TransmitTimeout.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

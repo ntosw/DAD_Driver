@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="Busy" Id="{bb15b117-3bbc-4dce-a8e4-e5608e416082}" SpecialFunc="None">
+    <Declaration><![CDATA[///Checks if the returned HRESULT is success and busy
+FUNCTION Busy : BOOL
+VAR_INPUT
+    hr : HRESULT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Busy := (hr = HResultSuccess.Busy);]]></ST>
+    </Implementation>
+    <LineIds Name="Busy">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

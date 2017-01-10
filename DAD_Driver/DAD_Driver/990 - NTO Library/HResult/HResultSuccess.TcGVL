@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <GVL Name="HResultSuccess" Id="{c39dda62-3ed3-43c5-989a-31eb429e44df}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+// HResult success types, in general HResult is success when greather than equal 0
+VAR_GLOBAL CONSTANT
+    Done : HRESULT := 16#20000001; //Successfully done
+    Busy : HRESULT := 16#20000002; //Busy, keep calling to wait for done or error    
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

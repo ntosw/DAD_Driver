@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <GVL Name="HResultErrors" Id="{a4a9f5d7-ef41-48aa-a364-df15541265a8}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+// HResult error types, in general HResult is error when less than 0
+VAR_GLOBAL CONSTANT
+    General : HRESULT := UDINT_TO_DINT(16#A0000000); //Fail with general error
+    Busy : HRESULT :=  UDINT_TO_DINT(16#A0000001); //Function van't be called now, either other caller busy or other state is not allowing this function 
+    InvalidParameter : HRESULT := UDINT_TO_DINT(16#A0000002); //Fail with invalid parameters    
+	Connect : HRESULT := UDINT_TO_DINT(16#A0000003); //Fail, when trying to connect
+	NotConnected : HRESULT := UDINT_TO_DINT(16#A0000004); //Fail, not connected
+	AllocSocket : HRESULT := UDINT_TO_DINT(16#A0000005); //Fail, when allocating a socket
+    InvalidPointerParameters : HRESULT := UDINT_TO_DINT(16#A0000006); //Fail, with invalid pointer parameters
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4020.28" ClassName="CDevEthernetProtocolPnMasterDef" SubType="119">
+	<Device Id="2" DevType="119" AmsPort="28674" AmsNetId="5.42.152.160.3.1" RemoteName="datalogic">
+		<Name>__FILENAME__</Name>
+		<DevData>000000000400010300000000000000005465726d20342028454c363633312900000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000</DevData>
+		<Image Id="3" AddrType="4" ImageType="3" SizeIn="14" SizeOut="68">
+			<Name>Image</Name>
+		</Image>
+		<Box BoxType="9121" Id="6">
+			<Name>__FILENAME__</Name>
+			<Comment>
+				<![CDATA[
+The GSDML is not available!
+
+GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+GSDML path: Y:\C\VM_share\GSDML files\
+VendorName: HMS Industrial Networks
+OrderNumber: ABCC-PRT
+GSDML HW Release Version: V1
+GSDML SW Release Version: V1.15]]>
+			</Comment>
+			<ImageId>121</ImageId>
+			<Vars VarGrpType="1">
+				<Name>Inputs</Name>
+				<Var>
+					<Name>PnIoBoxState</Name>
+					<Comment>
+						<![CDATA[0 = No error
+1 = Profinet device state machine is in boot mode
+2 = Device not found
+3 = The stationname is not unique
+4 = IP could not be set
+5 = IP conflict
+6 = DCP set was not successful
+7 = Watchdog error
+8 = Datahold error
+9 = RTC3: Sync mode could not be initiated
+10 = Profinet controller has a link error
+11 = The aliasname is not unique
+12 = The automatic name assignement isn't possible - wrong device type
+13 = IOC-AR is established but no application ready
+14 = IOC-AR is established but module difference
+15 = At least one InputCR is invalid, provider in stop or problemindicator is set
+16 = At least one OutputCR is invalid, provider in stop or problemindicator is set
+31 = Only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
+]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PnIoBoxDiag</Name>
+					<Comment>
+						<![CDATA[0x0000 = No diagnosis
+0x0001 = IOC-AR is not established
+0x0002 = IOC-AR is established
+0x0004 = IOC-AR is established but no application ready
+0x0008 = IOC-AR is established but module difference
+0x0010 = At least one AlarmCR got a diagnosis alarm
+0x0100 = At least one InputCR is invalid
+0x0200 = At least one InputCR Provider is in stop
+0x0400 = At least one InputCR Problemindicator is set
+0x1000 = At least one OutputCR is invalid
+0x2000 = At least one OutputCR Provider is in stop
+0x4000 = At least one OutputCR Problemindicator is set
+]]>
+					</Comment>
+					<Type>UINT</Type>
+					<BitOffs>16</BitOffs>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2">
+				<Name>Outputs</Name>
+				<Var>
+					<Name>PnIoBoxCtrl</Name>
+					<Type>UINT</Type>
+				</Var>
+			</Vars>
+			<Profinet DeviceId="7" VendorId="268" FrameOffset="32768" IPAdd="c0a80a10" ProtocolType="3" BoxOnDeviceTyp="119" MaxPhysSlotNr="65" InstanceServerPort="50000" InstanceClientPort="50001" InstanceId="1" InstanceNumberOfARs="1" InstanceNumberOfAPIs="1" MinDeviceInterval="64" Phase="1" WatchdogFaktor="3" ReductionRatio="16" SendClockFaktor="32" MaxInputLen="323" MaxOutputLen="323" SendClockFactorData="2000" RedRatio="0100020004000800100020004000800000010002" SavePnIoBoxValues="0100" BoxTypeInfo="This Device Access Point supports RT communication" PDOmapping="1" OutputErrorBehavior="2" GSDMLPath="Y:\C\VM_share\GSDML files\GSDML-V2.3-HMS-ABCC-PRT-20130226.xml" ImagePath="Y:\C\VM_share\GSDML files\.bmp" MainFamily="General" ProductFamily="Anybus CompactCom PRT" OrderNr="ABCC-PRT" DefaultDNSName="ABCC-PRT" VendorName="HMS Industrial Networks" FamDescription="Anybus CompactCom PROFINET IO" SWVersion="V1.15" HWVersion="V1" AltLanguage="7">
+				<GsdmlValue Id="F_Check_iPar" Content="00000100">
+					<RecordText>NoCheck</RecordText>
+					<RecordText>Check</RecordText>
+				</GsdmlValue>
+				<GsdmlValue Id="F_SIL" Content="0000010002000300">
+					<RecordText>SIL1</RecordText>
+					<RecordText>SIL2</RecordText>
+					<RecordText>SIL3</RecordText>
+					<RecordText>NoSIL</RecordText>
+				</GsdmlValue>
+				<GsdmlValue Id="F_CRC_Length" Content="00000200">
+					<RecordText>3-Byte-CRC</RecordText>
+					<RecordText>4-Byte-CRC</RecordText>
+				</GsdmlValue>
+				<GsdmlValue Id="dummy"/>
+				<UsedGsdmlSubModule SubSlotNumber="1" TypeOfSubmodule="3" Id="DAP V2.0" SubModuleName="RT Standard" InfoText="This Device Access Point supports RT communication"/>
+				<UsedGsdmlSubModule SubSlotNumber="1" TypeOfSubmodule="3" Id="ID_SUBMOD_INPUT1B" SubModuleName="Input 1 byte" InfoText="Input 1 byte">
+					<DataItemIn/>
+				</UsedGsdmlSubModule>
+				<UsedGsdmlSubModule SubSlotNumber="1" TypeOfSubmodule="3" Id="ID_SUBMOD_OUTPUT1B" SubModuleName="Output 1 byte" InfoText="Output 1 byte">
+					<DataItemOut/>
+				</UsedGsdmlSubModule>
+				<API Id="1">
+					<Name>API</Name>
+					<ImageId>4</ImageId>
+					<Module Id="1" DAP="true" ModuleIdentNumber="17" ModuleInfo="This Device Access Point supports RT communication">
+						<Name>Term 1 (DAP Module)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0001" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="DAP V2.0" AddSubModFlags="60">
+							<Name>Subterm 1 (RT Standard)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: This Device Access Point supports RT communication]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+						<SubModule Id="#x031c0002" SubModuleIdentNumber="1" TypeOfSubModule="1" SubSlotNumber="32768" IsFixSubmodule="true" SubModuleID="Interface 0" InterfaceData="0100000000000000000000000000000000000000000040000000000000000000">
+							<Name>Subterm 2 (Interface)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+						<SubModule Id="#x031c0003" SubModuleIdentNumber="2" TypeOfSubModule="2" SubSlotNumber="32769" IsFixSubmodule="true" SubModuleID="Port 0" PortData="00000000000000000000000000000000000000000000000000000000">
+							<Name>Subterm 3 (Port 1)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="2" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 2 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0004" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>32</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="3" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 3 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0005" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>40</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="4" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 4 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0006" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>48</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="5" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 5 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0007" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>56</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="6" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 6 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0008" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="12560" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>64</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="7" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 7 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0009" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>72</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="8" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 8 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c000a" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="137" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>80</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="9" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 9 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c000b" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="372" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>88</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="10" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 10 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c000c" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="377" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>96</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="11" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 11 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c000d" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>104</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="12" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 12 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c000e" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>112</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="13" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 13 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c000f" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>120</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="14" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 14 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0010" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="527" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>128</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="15" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 15 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0011" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>136</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="16" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 16 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0012" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>144</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="17" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 17 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0013" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="722" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>152</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="18" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 18 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0014" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>160</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="19" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 19 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0015" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>168</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="20" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 20 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0016" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="917" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>176</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="21" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 21 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0017" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>184</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="22" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 22 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0018" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="46" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>192</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="23" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 23 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0019" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="65" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>200</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="24" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 24 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c001a" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="115" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>208</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="25" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 25 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c001b" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>216</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="26" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 26 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c001c" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>224</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="27" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 27 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c001d" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>232</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="28" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 28 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c001e" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>240</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="29" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 29 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c001f" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="24830" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>248</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="30" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 30 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0020" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>256</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="31" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 31 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0021" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>264</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="32" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 32 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0022" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>272</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="33" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 33 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0023" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>280</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="34" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 34 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0024" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>288</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="35" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 35 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0025" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>296</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="36" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 36 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0026" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>304</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="37" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 37 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0027" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>312</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="38" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 38 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0028" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>320</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="39" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 39 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0029" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="338" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>328</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="40" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 40 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c002a" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>336</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="41" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 41 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c002b" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>344</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="42" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 42 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c002c" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>352</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="43" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 43 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c002d" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>360</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="44" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 44 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c002e" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>368</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="45" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 45 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c002f" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>376</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="46" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 46 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0030" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>384</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="47" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 47 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0031" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>392</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="48" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 48 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0032" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>400</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="49" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 49 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0033" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>408</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="50" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 50 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0034" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>416</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="51" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 51 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0035" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>424</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="52" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 52 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0036" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>432</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="53" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 53 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0037" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>440</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="54" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 54 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0038" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>448</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="55" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 55 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0039" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>456</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="56" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 56 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c003a" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>464</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="57" ModuleIdentNumber="2" ModuleInfo="Input 1 byte" ModuleID="ID_MODULE_INPUT1B" DirectDeletable="true">
+						<Name>Term 57 (Input 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c003b" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_INPUT1B">
+							<Name>Subterm 1 (Input 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Input 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+								<Var>
+									<Name>Input</Name>
+									<Type>USINT</Type>
+									<BitOffs>472</BitOffs>
+								</Var>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="58" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 58 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c003c" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="25944" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>16</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="59" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 59 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c003d" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>24</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="60" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 60 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c003e" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>32</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="61" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 61 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c003f" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="338" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>40</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="62" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 62 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0040" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>48</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="63" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 63 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0041" TypeOfSubModule="3" SubSlotNumber="1" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>56</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="64" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 64 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0042" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="48" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>64</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+					<Module Id="65" ModuleIdentNumber="32" ModuleInfo="Output 1 byte" ModuleID="ID_MODULE_OUTPUT1B" DirectDeletable="true">
+						<Name>Term 65 (Output 1 byte)</Name>
+						<Comment>
+							<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+OrderNumber: ABCC-PRT
+]]>
+						</Comment>
+						<ImageId>182</ImageId>
+						<SubModule Id="#x031c0043" TypeOfSubModule="3" SubSlotNumber="1" IOCREnd="102" IsFixSubmodule="true" SubModuleID="ID_SUBMOD_OUTPUT1B">
+							<Name>Subterm 1 (Output 1 byte)</Name>
+							<Comment>
+								<![CDATA[GSDML: GSDML-V2.3-HMS-ABCC-PRT-20130226.xml
+Submodule Info: Output 1 byte]]>
+							</Comment>
+							<ImageId>183</ImageId>
+							<Vars VarGrpType="1">
+								<Name>Inputs</Name>
+							</Vars>
+							<Vars VarGrpType="2">
+								<Name>Outputs</Name>
+								<Var>
+									<Name>Output</Name>
+									<Type>USINT</Type>
+									<BitOffs>72</BitOffs>
+								</Var>
+							</Vars>
+						</SubModule>
+					</Module>
+				</API>
+			</Profinet>
+		</Box>
+		<Profinet PLCPortNr="802" AddPortCount="1">
+			<Ethernet DeviceDesc="EL6631 PROFINET IO Controller" SpecialTask="true" TaskPort="350"/>
+			<PNController ClientPort="60000" ServerPort="61000" VendorId="288" DeviceId="37" IPData="00000000c0a80a0affffff00c0a80a01" SystemName="el6631-pncontroller" IRTSendClock="32">
+				<RTData CableLength="10"/>
+			</PNController>
+		</Profinet>
+	</Device>
+</TcSmItem>

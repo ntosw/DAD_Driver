@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <DUT Name="DatalogicInputs" Id="{24839670-60b1-4830-b597-477ed3934300}">
+    <Declaration><![CDATA[///Datalogic input mirroring
+TYPE DatalogicInputs :
+STRUCT
+    input1 : BIT; //Mirror of input 1
+    input2 : BIT; //Mirror of input 2
+    input3 : BIT; //Mirror of input 3
+    input4 : BIT; //Mirror of input 4
+    reserved1 : BIT;
+    reserved2 : BIT;
+    reserved3 : BIT;
+    phaseEcho : BIT; //Reading phase echo
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

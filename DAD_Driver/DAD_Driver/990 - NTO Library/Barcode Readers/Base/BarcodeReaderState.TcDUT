@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <DUT Name="BarcodeReaderState" Id="{b876c8d2-71c1-4a4a-ae5d-a3577fbe3510}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+///Barcode reader state
+TYPE BarcodeReaderState :
+(
+	unknown := 0, ///Unknown state
+    resetting, //Resetting device
+    noConnection, ///No connection to device
+    standby, ///Standby and ready to activate
+    reading, ///Reading
+    gettingResult, ///Getting result from device
+    evaluatingResult ///Evaluating the result from the device
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

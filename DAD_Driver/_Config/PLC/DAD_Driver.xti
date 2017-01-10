@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4020.28" ClassName="CNestedPlcProjDef">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{11B83B52-BE10-4F03-ADF3-F4B2F490399D}" AutoDeleteType="true">DAD_ControlFieldRecieve</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>TxBufferFull</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Toggles when Slave has made available new Input Area data]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>RxBufferEmpty</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[toggles when Output Area data has been read by Slave]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ResyncAcknowledge</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 1 as an acknowledge to a resync request. With this bit, the master can detect a slave is on line.]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MoreBit</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>1</Value>
+				</Default>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000300000100}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..255] OF BYTE</Name>
+			<BitSize>2048</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>256</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{4C6457C7-510C-4DA9-856A-8B4B592653D8}" AutoDeleteType="true">DAD_ControlFieldTransmit</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>TxBufferEmpty</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Must toggle when Input Area data has been read by Master]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>RxBufferFull</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Must toggle when Master makes available new Output Area data]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ResyncRequest</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[set to 1 for one second to resynchronize the slave. After resynchronization, all 4 handshake bits are set to 0]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MoreBit</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>1</Value>
+				</Default>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Project GUID="{900211E9-59CB-4CAB-BCEE-E16083D63820}" Name="DAD_Driver" PrjFilePath="..\..\DAD_Driver\DAD_Driver.plcproj" TmcFilePath="..\..\DAD_Driver\DAD_Driver.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
+		<Instance Id="#x01010010" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+			<Name>DAD_Driver Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Vars VarGrpType="1">
+				<Name>PlcTask Inputs</Name>
+				<Var>
+					<Name>MAIN.master.I_ControlFieldRecieve</Name>
+					<Comment>
+						<![CDATA[---------------- Inputs from DAD device ----------------]]>
+					</Comment>
+					<Type GUID="{11B83B52-BE10-4F03-ADF3-F4B2F490399D}">DAD_ControlFieldRecieve</Type>
+					<SubVar>
+						<Name>TxBufferFull</Name>
+						<Comment>
+							<![CDATA[Toggles when Slave has made available new Input Area data]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>RxBufferEmpty</Name>
+						<Comment>
+							<![CDATA[toggles when Output Area data has been read by Slave]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>ResyncAcknowledge</Name>
+						<Comment>
+							<![CDATA[Set to 1 as an acknowledge to a resync request. With this bit, the master can detect a slave is on line.]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>MoreBit</Name>
+						<Comment>
+							<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed1</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed2</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed3</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed4</Name>
+						<Comment>
+							<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>MAIN.master.I_SAP_FieldRecieve</Name>
+					<Comment>
+						<![CDATA[Control field recieve]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.master.I_LengthFieldRecieve</Name>
+					<Comment>
+						<![CDATA[Data length recieve ]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.master.I_ApplicationDataRecieve</Name>
+					<Comment>
+						<![CDATA[Application data recieve]]>
+					</Comment>
+					<Type GUID="{18071995-0000-0000-0000-000300000100}">ARRAY [0..255] OF BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.inputMirror</Name>
+					<Type>BYTE</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2">
+				<Name>PlcTask Outputs</Name>
+				<Var>
+					<Name>MAIN.master.Q_ControlFieldTransmit</Name>
+					<Comment>
+						<![CDATA[---------------- Outputs to DAD device ----------------]]>
+					</Comment>
+					<Type GUID="{4C6457C7-510C-4DA9-856A-8B4B592653D8}">DAD_ControlFieldTransmit</Type>
+					<SubVar>
+						<Name>TxBufferEmpty</Name>
+						<Comment>
+							<![CDATA[Must toggle when Input Area data has been read by Master]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>RxBufferFull</Name>
+						<Comment>
+							<![CDATA[Must toggle when Master makes available new Output Area data]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>ResyncRequest</Name>
+						<Comment>
+							<![CDATA[set to 1 for one second to resynchronize the slave. After resynchronization, all 4 handshake bits are set to 0]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>MoreBit</Name>
+						<Comment>
+							<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed1</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed2</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed3</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed4</Name>
+						<Comment>
+							<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>MAIN.master.Q_SAP_FieldTransmit</Name>
+					<Comment>
+						<![CDATA[Control field transmit]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.master.Q_LengthFieldTransmit</Name>
+					<Comment>
+						<![CDATA[Data length transmit ]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.master.Q_ApplicationDataTransmit</Name>
+					<Comment>
+						<![CDATA[Application data recieve]]>
+					</Comment>
+					<Type GUID="{18071995-0000-0000-0000-000300000100}">ARRAY [0..255] OF BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.outputMirror</Name>
+					<Type>BYTE</Type>
+				</Var>
+			</Vars>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x01010011"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+	<Mappings>
+		<OwnerA Name="DAD_Driver Instance">
+			<OwnerB Name="TIID^ProfinetController^datalogic">
+				<Link VarA="PlcTask Inputs^MAIN.inputMirror" VarB="API^Term 10 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[0]" VarB="API^Term 14 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[10]" VarB="API^Term 24 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[11]" VarB="API^Term 25 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[12]" VarB="API^Term 26 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[13]" VarB="API^Term 27 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[14]" VarB="API^Term 28 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[15]" VarB="API^Term 29 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[16]" VarB="API^Term 30 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[17]" VarB="API^Term 31 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[18]" VarB="API^Term 32 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[19]" VarB="API^Term 33 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[1]" VarB="API^Term 15 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[20]" VarB="API^Term 34 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[21]" VarB="API^Term 35 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[22]" VarB="API^Term 36 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[23]" VarB="API^Term 37 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[24]" VarB="API^Term 38 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[25]" VarB="API^Term 39 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[26]" VarB="API^Term 40 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[27]" VarB="API^Term 41 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[28]" VarB="API^Term 42 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[29]" VarB="API^Term 43 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[2]" VarB="API^Term 16 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[30]" VarB="API^Term 44 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[31]" VarB="API^Term 45 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[32]" VarB="API^Term 46 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[33]" VarB="API^Term 47 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[34]" VarB="API^Term 48 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[35]" VarB="API^Term 49 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[36]" VarB="API^Term 50 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[37]" VarB="API^Term 51 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[38]" VarB="API^Term 52 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[39]" VarB="API^Term 53 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[3]" VarB="API^Term 17 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[40]" VarB="API^Term 54 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[41]" VarB="API^Term 55 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[42]" VarB="API^Term 56 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[43]" VarB="API^Term 57 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[44]" VarB="API^Term 58 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[45]" VarB="API^Term 59 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[46]" VarB="API^Term 60 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[47]" VarB="API^Term 61 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[48]" VarB="API^Term 62 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[49]" VarB="API^Term 63 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[4]" VarB="API^Term 18 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[50]" VarB="API^Term 64 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[51]" VarB="API^Term 65 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[5]" VarB="API^Term 19 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[6]" VarB="API^Term 20 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[7]" VarB="API^Term 21 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[8]" VarB="API^Term 22 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ApplicationDataRecieve[9]" VarB="API^Term 23 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_ControlFieldRecieve" VarB="API^Term 11 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_LengthFieldRecieve" VarB="API^Term 13 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Inputs^MAIN.master.I_SAP_FieldRecieve" VarB="API^Term 12 (Input 1 byte)^Subterm 1 (Input 1 byte)^Inputs^Input"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_ApplicationDataTransmit[0]" VarB="API^Term 6 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_ApplicationDataTransmit[1]" VarB="API^Term 7 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_ApplicationDataTransmit[2]" VarB="API^Term 8 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_ApplicationDataTransmit[3]" VarB="API^Term 9 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_ControlFieldTransmit" VarB="API^Term 3 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_LengthFieldTransmit" VarB="API^Term 5 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.master.Q_SAP_FieldTransmit" VarB="API^Term 4 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+				<Link VarA="PlcTask Outputs^MAIN.outputMirror" VarB="API^Term 2 (Output 1 byte)^Subterm 1 (Output 1 byte)^Outputs^Output"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>

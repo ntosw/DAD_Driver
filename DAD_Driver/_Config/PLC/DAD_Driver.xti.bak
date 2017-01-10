@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4020.28" ClassName="CNestedPlcProjDef">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{0AE704A2-B226-4E41-A39C-9A676C255012}" AutoDeleteType="true">ST_DAD_ControlFieldRecieve</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>TxBufferFull</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Toggles when Slave has made available new Input Area data]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>RxBufferEmpty</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[toggles when Output Area data has been read by Slave]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ResyncAcknowledge</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 1 as an acknowledge to a resync request. With this bit, the master can detect a slave is on line.]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MoreBit</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>1</Value>
+				</Default>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000300000100}" IecBaseType="true">ARRAY [0..255] OF BYTE</Name>
+			<BitSize>2048</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>256</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{9785939F-73B2-4BF9-BF54-A786309F89FC}" AutoDeleteType="true">ST_DAD_ControlFieldTransmit</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>TxBufferEmpty</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Must toggle when Input Area data has been read by Master]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>RxBufferFull</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Must toggle when Master makes available new Output Area data]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ResyncRequest</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[set to 1 for one second to resynchronize the slave. After resynchronization, all 4 handshake bits are set to 0]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MoreBit</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+				<Default>
+					<Value>0</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>DAD_Fixed4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<Comment>
+					<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+				</Comment>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+				<Default>
+					<Value>1</Value>
+				</Default>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Project GUID="{900211E9-59CB-4CAB-BCEE-E16083D63820}" Name="DAD_Driver" PrjFilePath="..\..\DAD_Driver\DAD_Driver.plcproj" TmcFilePath="..\..\DAD_Driver\DAD_Driver.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
+		<Instance Id="#x01010010" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+			<Name>DAD_Driver Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Vars VarGrpType="1">
+				<Name>PlcTask Inputs</Name>
+				<Var>
+					<Name>MAIN.fbMaster.I_ControlFieldRecieve</Name>
+					<Comment>
+						<![CDATA[---------------- Inputs from DAD device ----------------]]>
+					</Comment>
+					<Type GUID="{0AE704A2-B226-4E41-A39C-9A676C255012}">ST_DAD_ControlFieldRecieve</Type>
+					<SubVar>
+						<Name>TxBufferFull</Name>
+						<Comment>
+							<![CDATA[Toggles when Slave has made available new Input Area data]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>RxBufferEmpty</Name>
+						<Comment>
+							<![CDATA[toggles when Output Area data has been read by Slave]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>ResyncAcknowledge</Name>
+						<Comment>
+							<![CDATA[Set to 1 as an acknowledge to a resync request. With this bit, the master can detect a slave is on line.]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>MoreBit</Name>
+						<Comment>
+							<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed1</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed2</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed3</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed4</Name>
+						<Comment>
+							<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMaster.I_SAP_FieldRecieve</Name>
+					<Comment>
+						<![CDATA[Control field recieve]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMaster.I_LengthFieldRecieve</Name>
+					<Comment>
+						<![CDATA[Data length recieve ]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMaster.I_ApplicationDataRecieve</Name>
+					<Comment>
+						<![CDATA[Application data recieve]]>
+					</Comment>
+					<Type GUID="{18071995-0000-0000-0000-000300000100}">ARRAY [0..255] OF BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.I_ControlFieldRecieve</Name>
+					<Comment>
+						<![CDATA[---------------- Inputs from DAD device ----------------]]>
+					</Comment>
+					<Type GUID="{0AE704A2-B226-4E41-A39C-9A676C255012}">ST_DAD_ControlFieldRecieve</Type>
+					<SubVar>
+						<Name>TxBufferFull</Name>
+						<Comment>
+							<![CDATA[Toggles when Slave has made available new Input Area data]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>RxBufferEmpty</Name>
+						<Comment>
+							<![CDATA[toggles when Output Area data has been read by Slave]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>ResyncAcknowledge</Name>
+						<Comment>
+							<![CDATA[Set to 1 as an acknowledge to a resync request. With this bit, the master can detect a slave is on line.]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>MoreBit</Name>
+						<Comment>
+							<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed1</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed2</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed3</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed4</Name>
+						<Comment>
+							<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.I_SAP_FieldRecieve</Name>
+					<Comment>
+						<![CDATA[Control field recieve]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.I_LengthFieldRecieve</Name>
+					<Comment>
+						<![CDATA[Data length recieve ]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.I_ApplicationDataRecieve</Name>
+					<Comment>
+						<![CDATA[Application data recieve]]>
+					</Comment>
+					<Type GUID="{18071995-0000-0000-0000-000300000100}">ARRAY [0..255] OF BYTE</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2">
+				<Name>PlcTask Outputs</Name>
+				<Var>
+					<Name>MAIN.fbMaster.Q_ControlFieldTransmit</Name>
+					<Comment>
+						<![CDATA[---------------- Outputs to DAD device ----------------]]>
+					</Comment>
+					<Type GUID="{9785939F-73B2-4BF9-BF54-A786309F89FC}">ST_DAD_ControlFieldTransmit</Type>
+					<SubVar>
+						<Name>TxBufferEmpty</Name>
+						<Comment>
+							<![CDATA[Must toggle when Input Area data has been read by Master]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>RxBufferFull</Name>
+						<Comment>
+							<![CDATA[Must toggle when Master makes available new Output Area data]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>ResyncRequest</Name>
+						<Comment>
+							<![CDATA[set to 1 for one second to resynchronize the slave. After resynchronization, all 4 handshake bits are set to 0]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>MoreBit</Name>
+						<Comment>
+							<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed1</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed2</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed3</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed4</Name>
+						<Comment>
+							<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMaster.Q_SAP_FieldTransmit</Name>
+					<Comment>
+						<![CDATA[Control field transmit]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMaster.Q_LengthFieldTransmit</Name>
+					<Comment>
+						<![CDATA[Data length transmit ]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMaster.Q_ApplicationDataTransmit</Name>
+					<Comment>
+						<![CDATA[Application data recieve]]>
+					</Comment>
+					<Type GUID="{18071995-0000-0000-0000-000300000100}">ARRAY [0..255] OF BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.Q_ControlFieldTransmit</Name>
+					<Comment>
+						<![CDATA[---------------- Outputs to DAD device ----------------]]>
+					</Comment>
+					<Type GUID="{9785939F-73B2-4BF9-BF54-A786309F89FC}">ST_DAD_ControlFieldTransmit</Type>
+					<SubVar>
+						<Name>TxBufferEmpty</Name>
+						<Comment>
+							<![CDATA[Must toggle when Input Area data has been read by Master]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>RxBufferFull</Name>
+						<Comment>
+							<![CDATA[Must toggle when Master makes available new Output Area data]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>ResyncRequest</Name>
+						<Comment>
+							<![CDATA[set to 1 for one second to resynchronize the slave. After resynchronization, all 4 handshake bits are set to 0]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>MoreBit</Name>
+						<Comment>
+							<![CDATA[is 1 when this is not the last piece of a fragmentation sequence while it is 0 when this is the last piece]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed1</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed2</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed3</Name>
+						<Comment>
+							<![CDATA[Set to 0 when DAD messaging protocol is used]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>DAD_Fixed4</Name>
+						<Comment>
+							<![CDATA[Set to 1 when DAD messaging protocol is used  ]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.Q_SAP_FieldTransmit</Name>
+					<Comment>
+						<![CDATA[Control field transmit]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.Q_LengthFieldTransmit</Name>
+					<Comment>
+						<![CDATA[Data length transmit ]]>
+					</Comment>
+					<Type>BYTE</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbSlave.Q_ApplicationDataTransmit</Name>
+					<Comment>
+						<![CDATA[Application data recieve]]>
+					</Comment>
+					<Type GUID="{18071995-0000-0000-0000-000300000100}">ARRAY [0..255] OF BYTE</Type>
+				</Var>
+			</Vars>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x01010011"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+	<Mappings>
+		<OwnerA Name="DAD_Driver Instance">
+			<OwnerB Name="TIPC^DAD_Driver^DAD_Driver Instance">
+				<Link VarA="PlcTask Inputs^MAIN.fbMaster.I_ApplicationDataRecieve" VarB="PlcTask Outputs^MAIN.fbSlave.Q_ApplicationDataTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbMaster.I_ControlFieldRecieve" VarB="PlcTask Outputs^MAIN.fbSlave.Q_ControlFieldTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbMaster.I_LengthFieldRecieve" VarB="PlcTask Outputs^MAIN.fbSlave.Q_LengthFieldTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbMaster.I_SAP_FieldRecieve" VarB="PlcTask Outputs^MAIN.fbSlave.Q_SAP_FieldTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbSlave.I_ApplicationDataRecieve" VarB="PlcTask Outputs^MAIN.fbMaster.Q_ApplicationDataTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbSlave.I_ControlFieldRecieve" VarB="PlcTask Outputs^MAIN.fbMaster.Q_ControlFieldTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbSlave.I_LengthFieldRecieve" VarB="PlcTask Outputs^MAIN.fbMaster.Q_LengthFieldTransmit"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbSlave.I_SAP_FieldRecieve" VarB="PlcTask Outputs^MAIN.fbMaster.Q_SAP_FieldTransmit"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbMaster.Q_ApplicationDataTransmit" VarB="PlcTask Inputs^MAIN.fbSlave.I_ApplicationDataRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbMaster.Q_ControlFieldTransmit" VarB="PlcTask Inputs^MAIN.fbSlave.I_ControlFieldRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbMaster.Q_LengthFieldTransmit" VarB="PlcTask Inputs^MAIN.fbSlave.I_LengthFieldRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbMaster.Q_SAP_FieldTransmit" VarB="PlcTask Inputs^MAIN.fbSlave.I_SAP_FieldRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbSlave.Q_ApplicationDataTransmit" VarB="PlcTask Inputs^MAIN.fbMaster.I_ApplicationDataRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbSlave.Q_ControlFieldTransmit" VarB="PlcTask Inputs^MAIN.fbMaster.I_ControlFieldRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbSlave.Q_LengthFieldTransmit" VarB="PlcTask Inputs^MAIN.fbMaster.I_LengthFieldRecieve"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbSlave.Q_SAP_FieldTransmit" VarB="PlcTask Inputs^MAIN.fbMaster.I_SAP_FieldRecieve"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>

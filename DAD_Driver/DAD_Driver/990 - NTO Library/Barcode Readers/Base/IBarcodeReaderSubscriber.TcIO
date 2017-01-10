@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <Itf Name="IBarcodeReaderSubscriber" Id="{9f259c6a-4048-4115-bfa6-c75047605960}">
+    <Declaration><![CDATA[///Interface for barcode readers result subscriber
+INTERFACE IBarcodeReaderSubscriber
+]]></Declaration>
+    <Method Name="NewDataRecieved" Id="{e457b818-c9ed-42ed-bc70-b22ec68a0536}">
+      <Declaration><![CDATA[// New data recieved
+METHOD NewDataRecieved : HResult
+VAR_INPUT
+    data : Data; ///Data recieved
+    result : BarcodeCodeReadingResult; ///Reading result
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

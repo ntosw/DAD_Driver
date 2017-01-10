@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="Object" Id="{7ae2b3bc-6889-427a-82e4-66c1a0f4f97f}" SpecialFunc="None">
+    <Declaration><![CDATA[///Object base class for all classes
+FUNCTION_BLOCK Object IMPLEMENTS IObject
+VAR
+    _className : STRING(50) := 'Object'; //Class name
+    _version : STRING(8) := '1.0'; //Version
+    firstPass : BOOL := FALSE; //First pass done
+    _error : BOOL := FALSE; //Error
+    _errorID : DWORD := 0; //Error id
+    _errors : ErrorHistory; //Error history
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="AddError" Id="{26aececa-6134-4ea0-b147-75cddd786a49}">
+      <Declaration><![CDATA[///Add error to error history
+METHOD PROTECTED AddError
+VAR_INPUT
+	errorID : DWORD; //Error ID
+END_VAR
+VAR
+	addErrorLoop : INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR addErrorLoop := ObjectSetup.ErrorHistMax TO (ObjectSetup.ErrorHistMin + 1) BY -1 DO
+	_errors[addErrorLoop] := _errors[addErrorLoop - 1];
+END_FOR
+_errors[ObjectSetup.ErrorHistMin] := errorID;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="ClassName" Id="{e3a4abb1-c213-4331-ae82-93a6832e0b2b}">
+      <Declaration><![CDATA[(*Name, do not implement property override*)
+PROPERTY ClassName : STRING(50)
+]]></Declaration>
+      <Get Name="Get" Id="{360d13b5-cb0a-43c0-bb23-3319ceaa1789}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ClassName := _className;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Control" Id="{b1c46935-f116-4df7-8461-83771a2e39a0}">
+      <Declaration><![CDATA[///Control, override to get cyclic task in FB
+METHOD INTERNAL Control
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="CycleTask" Id="{eb714de1-926f-48dc-8981-1ce3b30d9fbe}">
+      <Declaration><![CDATA[//Cycle Task, do not override this methode cyclic code is placed in M_Control 
+METHOD FINAL CycleTask
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT(firstPass) THEN
+    firstPass := Init() = HResultSuccess.Done;
+    IF NOT(firstPass) THEN
+        RETURN;
+	END_IF
+END_IF
+Control();]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Error" Id="{d41bc890-e3af-4a7c-8e60-f03a1c619e63}">
+      <Declaration><![CDATA[(*Error, do not implement property override*)
+PROPERTY Error : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{adec9c0c-9263-40fa-8b89-e0381541d2fc}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Error := _error;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="ErrorID" Id="{63ffb5b2-2ae5-4a47-86b8-36564ac6ed39}">
+      <Declaration><![CDATA[(*error id, do not implement property override*)
+PROPERTY ErrorID : DWORD
+]]></Declaration>
+      <Get Name="Get" Id="{2ddbd3ca-8dd1-411b-b481-2e4f78bb8567}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ErrorID := _errorID;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Errors" Id="{fcbaa8a8-a2ef-4477-8ff4-d26aef6ce2a5}">
+      <Declaration><![CDATA[(*Pointer to error history, do not implement property override*)
+PROPERTY Errors : POINTER TO ErrorHistory
+]]></Declaration>
+      <Get Name="Get" Id="{166ae521-9fb5-47c9-a237-1559e097c4e2}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Errors := ADR(_errors);]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="FB_init" Id="{3ab89805-0d3a-421a-8ebd-105e5791755c}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[firstPass := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{4237cb80-d346-4a7c-938a-6d6c8c793f75}">
+      <Declaration><![CDATA[///Initialize FB, Override to do custom initialize, no need to call super
+METHOD INTERNAL Init : HRESULT
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Init := HResultSuccess.Done;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{9560225a-1cab-4c8f-9ae8-4c6933de2dbc}">
+      <Declaration><![CDATA[(*Reset error, allways call super*)
+METHOD Reset
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_error := FALSE;
+_errorID := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetError" Id="{f7b289ae-e020-441f-a57b-6988eb02710a}">
+      <Declaration><![CDATA[///Set error on the Object and add entry to error history
+METHOD PROTECTED SetError
+VAR_INPUT
+	errorID : DWORD; //Error ID
+END_VAR
+VAR
+    setErrorLoop : INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT(_error) THEN
+	_error := TRUE;
+	THIS^._errorID := errorID;
+	FOR setErrorLoop := ObjectSetup.ErrorHistMax TO (ObjectSetup.ErrorHistMin + 1) BY -1 DO
+    	_errors[setErrorLoop] := _errors[setErrorLoop - 1];
+	END_FOR
+	_errors[ObjectSetup.ErrorHistMin] := _errorID;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Version" Id="{41ae7693-4c80-4a34-85a8-401771f8ba14}">
+      <Declaration><![CDATA[(*Version,do not implement property override*)
+PROPERTY Version : STRING(8)
+]]></Declaration>
+      <Get Name="Get" Id="{0e91d3fe-1da8-4005-902d-a36628829292}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Version := _version;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="Object">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.AddError">
+      <LineId Id="3" Count="2" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.ClassName.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.Control">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.CycleTask">
+      <LineId Id="3" Count="5" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.Error.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.ErrorID.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.Errors.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.FB_init">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.Init">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.Reset">
+      <LineId Id="3" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.SetError">
+      <LineId Id="3" Count="6" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Object.Version.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <DUT Name="Data" Id="{6a51e1ce-cc85-44e0-a60c-b0656f92ee25}">
+    <Declaration><![CDATA[///Data result
+TYPE Data :
+STRUCT
+    data : PVOID; ///Pointer to first byte of data
+    length : UDINT; ///Data length
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

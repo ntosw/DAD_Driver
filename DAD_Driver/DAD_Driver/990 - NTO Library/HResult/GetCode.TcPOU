@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="GetCode" Id="{8ca8ae97-dd2a-4577-b10c-49cf12ef4b3a}" SpecialFunc="None">
+    <Declaration><![CDATA[///Get the Code from the HRESULT
+FUNCTION GetCode : UINT
+VAR_INPUT
+    hr : HRESULT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[GetCode := UDINT_TO_UINT(DINT_TO_UDINT(hr) AND 16#0000FFFF);
+]]></ST>
+    </Implementation>
+    <LineIds Name="GetCode">
+      <LineId Id="3" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

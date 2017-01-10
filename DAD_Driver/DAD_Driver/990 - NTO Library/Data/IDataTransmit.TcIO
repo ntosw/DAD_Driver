@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <Itf Name="IDataTransmit" Id="{7164a421-26f9-463d-a389-81d864b5be65}">
+    <Declaration><![CDATA[///Data trasnmitter interface, implemented by classes that can transmit data 
+INTERFACE IDataTransmit EXTENDS IObject
+]]></Declaration>
+    <Property Name="MaxDataLength" Id="{8b59b0a1-068a-4800-8038-6bccd45cbffb}">
+      <Declaration><![CDATA[// Gets the maximum allow data to send in one transmittion
+PROPERTY MaxDataLength : UDINT]]></Declaration>
+      <Get Name="Get" Id="{16fa31d7-d200-4854-913d-aa8ab55579c6}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="TransmitData" Id="{e3427033-7967-4ef6-ba4e-7e87095383ac}">
+      <Declaration><![CDATA[/// Transmit data, keep calling while HResult returns busy
+/// General implementation should fully copy data to internal
+/// buffer at first call
+METHOD TransmitData : HResult
+VAR_INPUT
+    data : Data; //Data to transmit
+END_VAR
+VAR_IN_OUT
+    id : UDINT; ///Used to id the called, should be 0 at first call, when functions finish normally success or error it will reset to 0
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

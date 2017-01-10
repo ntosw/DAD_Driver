@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="Fail" Id="{8ce76036-fc0e-4632-93a1-4d7fa7219091}" SpecialFunc="None">
+    <Declaration><![CDATA[///Checks if the HRESULT is error
+FUNCTION Fail : BOOL
+VAR_INPUT
+    hr : HRESULT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Fail := (hr < 0);]]></ST>
+    </Implementation>
+    <LineIds Name="Fail">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

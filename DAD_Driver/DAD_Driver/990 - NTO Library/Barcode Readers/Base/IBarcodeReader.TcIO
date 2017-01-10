@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <Itf Name="IBarcodeReader" Id="{b5cd46cd-34b2-4079-b597-28a26b7ce532}">
+    <Declaration><![CDATA[///Interface for barcode readers
+INTERFACE IBarcodeReader EXTENDS IObject
+]]></Declaration>
+    <Method Name="EndReading" Id="{d38ac0d4-0f16-452e-b07f-2534d417af73}">
+      <Declaration><![CDATA[///End the reading
+METHOD EndReading : HRESULT
+VAR_OUTPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="GetDigitalInputs" Id="{2e823991-5596-4e33-bbd5-0e020fd2d98b}">
+      <Declaration><![CDATA[/// Gets the state of optional digital inputs
+PROPERTY GetDigitalInputs : ARRAY[0..7] OF BOOL]]></Declaration>
+      <Get Name="Get" Id="{69731284-48ed-4736-a8b4-f33b5469e527}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="GetState" Id="{7c69176c-38ca-4f4c-847d-d2deccccef4c}">
+      <Declaration><![CDATA[
+PROPERTY GetState : BOOL]]></Declaration>
+      <Get Name="Get" Id="{5cfa7e9c-96eb-4138-873d-fc086ff5699f}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{0550ad60-ea58-4873-8883-c0c57e37e961}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="LastResult" Id="{8460a2b4-098f-4b12-9ca4-32208f906662}">
+      <Declaration><![CDATA[///Get the last reading result
+PROPERTY LastResult : Data]]></Declaration>
+      <Get Name="Get" Id="{fbb60cc6-a14e-4a2c-84fe-409a0bd8556d}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="ResetDevice" Id="{5466ea14-ff90-40a7-918e-53bfe5304de8}">
+      <Declaration><![CDATA[///Reset the device
+METHOD ResetDevice : HRESULT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="SetDigitalOutputs" Id="{a6878890-7123-4430-87a4-555ca1226467}">
+      <Declaration><![CDATA[/// Sets the state of digital outputs
+METHOD SetDigitalOutputs : HRESULT
+VAR_INPUT
+    no : USINT; ///Output number to set between 0 - 7
+    value : BOOL; ///Value to set output number
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="StartReading" Id="{7b59ba9e-c9ca-4beb-b1e1-081962a4efb8}">
+      <Declaration><![CDATA[///Start the reading
+METHOD StartReading : HRESULT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="Subscriber" Id="{a5ead5e8-0be5-4c00-9317-73d65fdc1cd8}">
+      <Declaration><![CDATA[///Get or set the subscriber to the barcode reader
+PROPERTY Subscriber : IBarcodeReaderSubscriber]]></Declaration>
+      <Get Name="Get" Id="{42766f96-d932-42e0-bf28-61ca402a98b1}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{f4c18fd2-2ce6-4f1b-ad87-843605dc4d16}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>

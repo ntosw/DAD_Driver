@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4020.28" ClassName="CDevEthernetProtocolPnMasterDef" SubType="119">
+	<Device Id="2" DevType="119" AmsPort="28674" AmsNetId="5.42.152.160.3.1" RemoteName="ProfinetController">
+		<Name>__FILENAME__</Name>
+		<DevData>00000000040001030000000050c300005465726d20342028454c363633312900000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000</DevData>
+		<Image Id="3" AddrType="4" ImageType="3" SizeIn="14" SizeOut="68">
+			<Name>Image</Name>
+		</Image>
+		<Box File="datalogic.xti" Id="6"/>
+		<Profinet PLCPortNr="802" AddPortCount="1">
+			<Ethernet DeviceDesc="EL6631 PROFINET IO Controller" SpecialTask="true" TaskPort="350"/>
+			<PNController ClientPort="60000" ServerPort="61000" VendorId="288" DeviceId="37" IPData="00000000c0a8140affffff00c0a81401" SystemName="el6631-pncontroller" IRTSendClock="32">
+				<RTData CableLength="10"/>
+			</PNController>
+		</Profinet>
+	</Device>
+</TcSmItem>

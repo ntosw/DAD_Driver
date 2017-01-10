@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="Success" Id="{1f2321bb-8405-4e96-a878-5b581c40e42d}" SpecialFunc="None">
+    <Declaration><![CDATA[///Checks if the returned HRESULT is success
+FUNCTION Success : BOOL
+VAR_INPUT
+    hr : HRESULT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Success := (hr >= 0);]]></ST>
+    </Implementation>
+    <LineIds Name="Success">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

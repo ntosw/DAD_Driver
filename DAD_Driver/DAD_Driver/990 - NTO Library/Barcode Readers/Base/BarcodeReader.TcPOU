@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="BarcodeReader" Id="{a068bca2-66d0-420a-9b58-0c3460d455ae}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK BarcodeReader EXTENDS Object IMPLEMENTS IBarcodeReader, IDataReciever
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Folder Name="IBarcodeReader" Id="{969b1925-1af5-4627-ae67-482df599aab6}" />
+    <Method Name="Control" Id="{581523c6-b034-42c2-8374-99191bdf1e34}">
+      <Declaration><![CDATA[///Control, override to get cyclic task in FB
+METHOD INTERNAL Control
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="EndReading" Id="{4554e04d-a5d2-4013-a32d-ebc10d2621e4}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[///End the reading
+METHOD EndReading : HRESULT
+VAR_OUTPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{43e06671-b335-45bf-970b-0d8175897836}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_version := '1.0';
+_className := 'BarcodeReader';]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="GetDigitalInputs" Id="{189770f7-33da-4617-948d-340b2c592942}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[/// Gets the state of optional digital inputs
+PROPERTY GetDigitalInputs : ARRAY[0..7] OF BOOL]]></Declaration>
+      <Get Name="Get" Id="{71979669-0166-4298-90d6-699042a36e4c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="GetState" Id="{ebb381ae-dca4-4a08-97d8-a09834440f44}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[
+PROPERTY GetState : BOOL]]></Declaration>
+      <Get Name="Get" Id="{bd20db8b-0de6-47cb-ba28-314962a56803}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{396ba977-777d-4a5c-b4a0-328ac20f3f28}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="LastResult" Id="{8d2e58ed-fae8-44a9-a33b-d66c13a8dcb6}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[///Get the last reading result
+PROPERTY LastResult : Data]]></Declaration>
+      <Get Name="Get" Id="{b98bed49-fecb-4351-baee-0c19415a7019}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="NewDataRecieved" Id="{0488bd68-e38c-4e42-996b-99110d2d392a}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[// New data recieved
+METHOD NewDataRecieved : HResult
+VAR_INPUT
+    data : Data; ///Data recieved
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ResetDevice" Id="{34e4b6c4-1993-413c-bc07-e7d8334b5b12}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[///Reset the device
+METHOD ResetDevice : HRESULT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetDigitalOutputs" Id="{30166c93-3e64-4d83-9fa7-da467ada678b}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[/// Sets the state of digital outputs
+METHOD SetDigitalOutputs : HRESULT
+VAR_INPUT
+    no : USINT; ///Output number to set between 0 - 7
+    value : BOOL; ///Value to set output number
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="StartReading" Id="{03a296de-d56f-441a-bd5f-5ae743aa90f4}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[///Start the reading
+METHOD StartReading : HRESULT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Subscriber" Id="{29cf43fc-c00e-4b65-a2e6-e062b13dca73}" FolderPath="IBarcodeReader\">
+      <Declaration><![CDATA[///Get or set the subscriber to the barcode reader
+PROPERTY Subscriber : IBarcodeReaderSubscriber]]></Declaration>
+      <Get Name="Get" Id="{357c161d-27d9-4710-9ec2-858d8cd43460}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{f3f42859-4b11-4a5e-8a95-10d7a1b9fca8}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="BarcodeReader">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.Control">
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.EndReading">
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.FB_init">
+      <LineId Id="9" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.GetDigitalInputs.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.GetState.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.GetState.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.LastResult.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.NewDataRecieved">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.ResetDevice">
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.SetDigitalOutputs">
+      <LineId Id="8" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.StartReading">
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.Subscriber.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="BarcodeReader.Subscriber.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <Itf Name="IObject" Id="{71bff364-b69a-44d0-9e77-56600f836e07}">
+    <Declaration><![CDATA[///Base object interface
+INTERFACE IObject
+]]></Declaration>
+    <Property Name="ClassName" Id="{018f9bb6-25ee-430b-af84-676fdb8bf9fb}">
+      <Declaration><![CDATA[///Name
+PROPERTY FINAL ClassName : STRING(50)]]></Declaration>
+      <Get Name="Get" Id="{21f46f79-76f4-4022-9d63-640bccb13f88}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="CycleTask" Id="{132cf11b-d0e9-41a1-8822-8c6c6459a2b6}">
+      <Declaration><![CDATA[//Cycle Task, do not override this methode cyclic code is placed in M_Control
+METHOD CycleTask
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="Error" Id="{92bdd57d-6082-4fc9-b5bc-48c377fa720e}">
+      <Declaration><![CDATA[///Error, do not implement property override
+PROPERTY Error : BOOL]]></Declaration>
+      <Get Name="Get" Id="{c15a089e-c730-4197-b151-b1f16945984a}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="ErrorID" Id="{56316ac6-37be-4ae7-b9c6-85b71e81ef00}">
+      <Declaration><![CDATA[///Error id, do not implement property override
+PROPERTY ErrorID : DWORD]]></Declaration>
+      <Get Name="Get" Id="{0f14eb6d-c4ba-4050-8b03-c964f7bb48af}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="Errors" Id="{f3e9ac81-d303-44ef-8945-6f8ec34b3acd}">
+      <Declaration><![CDATA[(*Pointer to error history, do not implement property override*)
+PROPERTY Errors : POINTER TO ErrorHistory
+]]></Declaration>
+      <Get Name="Get" Id="{4646db2b-ceee-4476-a3eb-ff00a6dc249c}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{b6d8866c-cf20-4977-a25d-2270515537dd}">
+      <Declaration><![CDATA[///Reset error, allways call super
+METHOD Reset
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="Version" Id="{7a8c53e5-9ec5-4025-a5aa-b88cb49466df}">
+      <Declaration><![CDATA[///Version,do not implement property override
+PROPERTY PUBLIC Version : String(8)]]></Declaration>
+      <Get Name="Get" Id="{3c7a6614-537c-4695-9735-8dd394ff90a6}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>
